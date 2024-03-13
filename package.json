@@ -1,0 +1,94 @@
+{
+  "icon": "TPL.jpg",
+  "name": "tpl",
+  "displayName": "TPL Extension",
+  "description": "The TPL Runner extension is a powerful tool for developers who work with TPL scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.",
+  "author": {
+    "name": "Tanish Ranjan",
+    "email": "tanishranjan.tr@gmail.com",
+    "url": "https://tanishranjan-portfolio.web.app/"
+  },
+  "publisher": "tanishranjan-portfolio.web.app",
+  "version": "0.0.1",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "url": "https://github.com/Tanish-Ranjan/TPL/Extensions"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Debuggers",
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:tpl",
+    "onCommand:tpl.selectInterpreter",
+    "onCommand:workbench.action.debug.run"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tpl.selectInterpreter",
+        "title": "Select TPL Interpreter",
+        "category": "TPL"
+      }
+    ],
+    "configuration": {
+      "title": "TPL",
+      "properties": {
+        "tpl.interpreterPath": {
+          "type": "string",
+          "description": "Path to the TPL interpreter JAR file"
+        }
+      }
+    },
+    "debuggers": [
+      {
+        "type": "tpl",
+        "label": "The Professional's Language (TPL)",
+        "languages": [
+          "tpl"
+        ],
+        "runtime": "workbench.action.debug.run"
+      }
+    ],
+    "languages": [
+      {
+        "id": "tpl",
+        "aliases": [
+          "The Professional's Language (TPL)",
+          "TPL"
+        ],
+        "extensions": [
+          ".tpl"
+        ],
+        "configuration": "./src/language-configuration.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "tpl",
+        "path": "./src/snippets.json"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.3",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.60.0",
+    "@vscode/test-electron": "^2.3.6",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2"
+  }
+}

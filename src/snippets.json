@@ -1,0 +1,40 @@
+{
+    "Variable Declaration": {
+        "prefix": "var",
+        "body": "var ${1:variableName} = ${0:initialValue}",
+        "description": "Snippet for declaring a variable"
+    },
+    "Typed Variable Declaration": {
+        "prefix": "tvar",
+        "body": "var ${1:variableName}: ${2:variableType} = ${0:initialValue}",
+        "description": "Snippet for declaring a variable with it's type"
+    },
+    "Function Declaration": {
+        "prefix": "fun",
+        "body": [
+            "fun ${1:functionName}(${2:parameters}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Snippet for declaring a function"
+    },
+    "Returning Function Declaration": {
+        "prefix": "rfun",
+        "body": [
+            "fun ${1:functionName}(${2:parameters}): ${3:returnType} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Snippet for declaring a function which returns a value"
+    },
+    "Start Region": {
+        "prefix": "#region",
+        "body": "//region",
+        "description": "Snippet for starting a region"
+    },
+    "End Region": {
+        "prefix": "#endregion",
+        "body": "//endregion",
+        "description": "Snippet for ending a region"
+    }
+}
