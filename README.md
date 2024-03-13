@@ -1,6 +1,6 @@
 # TPL Extension
 
-The TPL Runner extension is a powerful tool for developers who work with TPL scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.
+The TPL extension is a powerful tool for developers who work with TPL scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.
 
 ## Features
 
@@ -11,7 +11,7 @@ The TPL Runner extension is a powerful tool for developers who work with TPL scr
 
 ## Installation
 
-There are two ways to install the TPL Runner extension:
+There are two ways to install the TPL extension:
 
 1. VS Code Marketplace:
 
@@ -39,22 +39,22 @@ There are two ways to install the TPL Runner extension:
 
 1. Open a `.tpl` file in VS Code.
 2. Start typing a common TPL construct (e.g., "var", "fun").
-3. As you type, VS Code will suggest relevant code snippets from the TPL Runner extension.
+3. As you type, VS Code will suggest relevant code snippets from the TPL extension.
 4. Select the appropriate snippet to insert it into your code.
 
 ### Customization
 
-You can customize some aspects of the TPL Runner extension through your VS Code settings:
+You can customize some aspects of the TPL extension through your VS Code settings:
 
-* `tplRunner.interpreterPath`: Set the path to your TPL interpreter JAR file.
+* `tpl.interpreterPath`: Set the path to your TPL interpreter JAR file.
 * You can also configure keyboard shortcuts for running and debugging TPL scripts (refer to VS Code documentation for custom keybindings).
 
 ## Contributing
 
-We welcome contributions from the community! If you have any bug fixes, improvements, or new features you'd like to see in the TPL Runner extension, feel free to create a pull request on the GitHub repository https://github.com/Tanish-Ranjan/TPL.
+We welcome contributions from the community! If you have any bug fixes, improvements, or new features you'd like to see in the TPL extension, feel free to create a pull request on the GitHub repository https://github.com/Tanish-Ranjan/TPL-VSC-Extension.
 
 ## License
 
 This extension is licensed under the GNU General Public License v3.0 (GPL-3.0). See the LICENSE file for more information.
 
-### Enjoy using the TPL Runner extension!
+### Enjoy using the TPL extension!
