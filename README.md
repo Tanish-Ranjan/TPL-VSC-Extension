@@ -1,6 +1,6 @@
 # TPL Extension
 
-The TPL extension is a powerful tool for developers who work with TPL scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.
+The TPL extension is a powerful tool for developers who work with [TPL](https://github.com/Tanish-Ranjan/TPL) scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.
 
 ## Features
 
@@ -21,7 +21,7 @@ There are two ways to install the TPL extension:
 
 2. VSIX Package (Optional):
 
-* Download the VSIX package from https://github.com/Tanish-Ranjan/TPL/Extensions.
+* Download the latest VSIX package from [Releases Section](https://github.com/Tanish-Ranjan/TPL-VSC-Extension/releases).
 * Open the Extensions view in VS Code.
 * Click the three dots (...) in the top right corner and select "Install from VSIX...".
 * Navigate to the downloaded VSIX file and select it.
