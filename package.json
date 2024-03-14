@@ -1,8 +1,8 @@
 {
   "icon": "TPL.jpg",
-  "name": "tpl",
+  "name": "the-professionals-language",
   "displayName": "TPL Extension",
-  "description": "The TPL Runner extension is a powerful tool for developers who work with TPL scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.",
+  "description": "The TPL extension is a powerful tool for developers who work with TPL scripting. It provides a comprehensive set of features to streamline your TPL development workflow within Visual Studio Code.",
   "author": {
     "name": "Tanish Ranjan",
     "email": "tanishranjan.tr@gmail.com",
