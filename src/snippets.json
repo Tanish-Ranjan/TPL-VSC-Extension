@@ -1,32 +1,4 @@
 {
-    "Variable Declaration": {
-        "prefix": "var",
-        "body": "var ${1:variableName} = ${0:initialValue}",
-        "description": "Snippet for declaring a variable"
-    },
-    "Typed Variable Declaration": {
-        "prefix": "tvar",
-        "body": "var ${1:variableName}: ${2:variableType} = ${0:initialValue}",
-        "description": "Snippet for declaring a variable with it's type"
-    },
-    "Function Declaration": {
-        "prefix": "fun",
-        "body": [
-            "fun ${1:functionName}(${2:parameters}) {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Snippet for declaring a function"
-    },
-    "Returning Function Declaration": {
-        "prefix": "rfun",
-        "body": [
-            "fun ${1:functionName}(${2:parameters}): ${3:returnType} {",
-            "\t$0",
-            "}"
-        ],
-        "description": "Snippet for declaring a function which returns a value"
-    },
     "Start Region": {
         "prefix": "#region",
         "body": "//region",
@@ -36,5 +8,205 @@
         "prefix": "#endregion",
         "body": "//endregion",
         "description": "Snippet for ending a region"
+    },
+    "Single-Line Comment": {
+        "prefix": "//",
+        "body": "// ${0:comment}",
+        "description": "Adds a single-line comment"
+    },
+    "Variable Declaration": {
+        "prefix": "var",
+        "body": "var ${1:name} = ${0:value}",
+        "description": "Declares a variable"
+    },
+    "Typed Variable Declaration": {
+        "prefix": "tvar",
+        "body": "var ${1:name}: ${2:type} = ${0:value}",
+        "description": "Declares a variable with it's type"
+    },
+    "If Statement": {
+        "prefix": "if",
+        "body": [
+            "if (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates an if conditional statement"
+    },
+    "Else Statement": {
+        "prefix": "else",
+        "body": [
+            "else {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates an else conditional statement"
+    },
+    "If-Else Statement": {
+        "prefix": "ifelse",
+        "body": [
+            "if (${1:condition}) {",
+            "\t$0",
+            "} else {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates an if-else conditional statement"
+    },
+    "Elif Statement": {
+        "prefix": "elif",
+        "body": [
+            "elif (${1:condition}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates an elif conditional statement"
+    },
+    "Switch Statement": {
+        "prefix": "switch",
+        "body": [
+            "switch {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a switch conditional statement"
+    },
+    "Switch Statement with Default Case": {
+        "prefix": "switchelse",
+        "body": [
+            "switch {",
+            "\t$0",
+            "} else {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a switch conditional statement with default case"
+    },
+    "For Loop": {
+        "prefix": "for",
+        "body": [
+            "for(${1:variable} in ${2:collection}){",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a for loop iterating over a sequence"
+    },
+    "While Loop": {
+        "prefix": "while",
+        "body": [
+            "while(${1:condition}){",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a while loop"
+    },
+    "Try": {
+        "prefix": "try",
+        "body": [
+            "try {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a try statement"
+    },
+    "Catch": {
+        "prefix": "catch",
+        "body": [
+            "catch {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a catch statement"
+    },
+    "Try Catch": {
+        "prefix": "trycatch",
+        "body": [
+            "try {",
+            "\t$0",
+            "} catch {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Creates a try-catch statement"
+    },
+    "Function Definition": {
+        "prefix": "fun",
+        "body": [
+            "fun ${1:name}(${2:parameters}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Defines a function with a name and optional parameters"
+    },
+    "Function Definition with Return Statement": {
+        "prefix": "rfun",
+        "body": [
+            "fun ${1:name}(${2:parameters}): ${3:type} {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Defines a function with a name, optional parameters and return type"
+    },
+    "Class Definition": {
+        "prefix": "class",
+        "body": [
+            "class ${1:name}(${2:constructor}) {",
+            "\t$0",
+            "}"
+        ],
+        "description": "Defines a class with a name and optional constructor parameters"
+    },
+    "KTX Block": {
+        "prefix": "ktx",
+        "body": [
+            "ktx ```",
+            "\t$0",
+            "```"
+        ],
+        "description": "Creates ktx statement"
+    },
+    "KTX Block with Parameters": {
+        "prefix": "ktxp",
+        "body": [
+            "ktx(${1:parameters}) ```",
+            "\t$0",
+            "```"
+        ],
+        "description": "Creates ktx statement with parameters"
+    },
+    "Print Statement": {
+        "prefix": "print",
+        "body": "print($0)",
+        "description": "Creates print statement"
+    },
+    "Input Statement": {
+        "prefix": "input",
+        "body": "input($0)",
+        "description": "Creates input statement"
+    },
+    "Type Statement": {
+        "prefix": "type",
+        "body": "type($0)",
+        "description": "Creates type statement"
+    },
+    "Instance Statement": {
+        "prefix": "inst",
+        "body": "inst($0)",
+        "description": "Creates instance statement"
+    },
+    "Stringify Statement": {
+        "prefix": "str",
+        "body": "str($0)",
+        "description": "Creates stringify statement"
+    },
+    "Cast Statement": {
+        "prefix": "cast",
+        "body": "cast(${1:object}, ${0:type})",
+        "description": "Creates cast statement"
+    },
+    "Generate List Statement": {
+        "prefix": "genList",
+        "body": "genList(start=$1, end=$2, step=$3)$0",
+        "description": "Creates genList statement"
     }
 }

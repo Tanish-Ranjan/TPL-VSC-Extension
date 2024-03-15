@@ -1,6 +1,8 @@
 const vscode = require('vscode');
 const { selectInterpreter } = require("./src/selectInterpreter")
 
+let activeTPLTerminal = null;
+
 function activate(context) {
 
 	const runButton = async () => {
@@ -18,9 +20,24 @@ function activate(context) {
 		const scriptPath = activeTextEditor.document.uri.fsPath;
 		const command = 'java -jar ' + interpreterPath + ' ' + scriptPath;
 
-		const terminal = vscode.window.createTerminal('The Professional\'s Language (TPL)');
-		terminal.sendText(command);
-		terminal.show();
+		if (activeTPLTerminal) {
+
+			if (!activeTPLTerminal.exitStatus) {
+
+				try {
+					await activeTPLTerminal.show();
+					activeTPLTerminal.sendText(command);
+					return;
+				} catch (e) {
+					console.error("Error focusing or sending command to existing TPL terminal: " + e);
+				}
+
+			}
+
+		}
+
+		activeTPLTerminal = createAndShowTPLTerminal(command);
+
 	};
 
 	let selectInterpreterCmd = () => {
@@ -29,6 +46,13 @@ function activate(context) {
 
 	context.subscriptions.push(vscode.commands.registerCommand('workbench.action.debug.run', runButton));
 	context.subscriptions.push(vscode.commands.registerCommand('tpl.selectInterpreter', selectInterpreterCmd));
+}
+
+function createAndShowTPLTerminal(command) {
+	const terminal = vscode.window.createTerminal('The Professional\'s Language (TPL)');
+	terminal.sendText(command);
+	terminal.show();
+	return terminal;
 }
 
 function deactivate() { }

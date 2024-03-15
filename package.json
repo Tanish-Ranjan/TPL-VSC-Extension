@@ -69,6 +69,13 @@
         "configuration": "./src/language-configuration.json"
       }
     ],
+    "grammars": [
+      {
+        "language": "tpl",
+        "scopeName": "source.tpl",
+        "path": "./src/tpl.tmLanguage.json"
+      }
+    ],
     "snippets": [
       {
         "language": "tpl",
