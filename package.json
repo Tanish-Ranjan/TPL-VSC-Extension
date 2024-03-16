@@ -25,16 +25,43 @@
   ],
   "activationEvents": [
     "onLanguage:tpl",
-    "onCommand:tpl.selectInterpreter",
-    "onCommand:workbench.action.debug.run"
+    "onCommand:tpl.selectInterpreter"
   ],
   "main": "./extension.js",
   "contributes": {
+    "menus": {
+      "editor/title/run": [
+        {
+          "command": "tpl.runEditorContents",
+          "when": "resourceLangId == tpl",
+          "group": "navigation@1"
+        },
+        {
+          "command": "tpl.debugEditorContents",
+          "when": "resourceLangId == tpl",
+          "group": "navigation@2"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "tpl.selectInterpreter",
         "title": "Select TPL Interpreter",
         "category": "TPL"
+      },
+      {
+        "command": "tpl.runEditorContents",
+        "title": "Run File",
+        "category": "TPL Extension",
+        "enablement": "!inDebugMode",
+        "icon": "$(play)"
+      },
+      {
+        "command": "tpl.debugEditorContents",
+        "title": "Debug File",
+        "category": "TPL Extension",
+        "enablement": "!inDebugMode",
+        "icon": "$(debug-alt)"
       }
     ],
     "configuration": {
@@ -50,10 +77,9 @@
       {
         "type": "tpl",
         "label": "The Professional's Language (TPL)",
-        "languages": [
-          "tpl"
-        ],
-        "runtime": "workbench.action.debug.run"
+
+        "program": "./src/debug.js",
+        "languages": ["tpl"]
       }
     ],
     "languages": [
