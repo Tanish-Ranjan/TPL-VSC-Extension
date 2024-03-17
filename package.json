@@ -51,14 +51,14 @@
       },
       {
         "command": "tpl.runEditorContents",
-        "title": "Run File",
+        "title": "Run TPL File",
         "category": "TPL Extension",
         "enablement": "!inDebugMode",
         "icon": "$(play)"
       },
       {
         "command": "tpl.debugEditorContents",
-        "title": "Debug File",
+        "title": "Debug TPL File",
         "category": "TPL Extension",
         "enablement": "!inDebugMode",
         "icon": "$(debug-alt)"
