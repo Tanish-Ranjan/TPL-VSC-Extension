@@ -30,18 +30,6 @@
             "end": "^\\s*//\\s*endregion\\b"
         }
     },
-    "indentationRules": {
-        "increaseIndentPattern": "^((?!\\/\\/).)*(\\{[^}\"'`]*|\\([^)\"'`]*|\\[[^\\]\"'`]*|```[^\\]\"'`]*)$",
-        "decreaseIndentPattern": "^((?!.*?\\/\\*).*\\*/)?\\s*[\\)\\}\\](```)].*$"
-    },
-    "onEnterRules": [
-        {
-            "beforeText": "^\\s*(if|elif|else|switch|for|while|try|catch|fun|class|ktx).*$",
-            "action": {
-                "indent": "indent"
-            }
-        }
-    ],
     "colorizedBracketPairs": [
         ["(",")"],
         ["[","]"],

@@ -47,6 +47,9 @@
                     "include": "#while_definition"
                 },
                 {
+                    "include": "#ktx"
+                },
+                {
                     "include": "#code_block"
                 },
                 {
@@ -322,7 +325,7 @@
             ]
         },
         "ktx_start": {
-            "begin": "\\s*(\\bktx\\b)\\s*(\\()",
+            "begin": "\\s*(\\bktx\\b)\\s*(\\()\\s*",
             "end": "(\\))",
             "beginCaptures": {
                 "1": {
@@ -337,6 +340,7 @@
                     "name": "meta.punctuation.parenthesis"
                 }
             },
+            "contentName": "meta.parameters",
             "patterns": [
                 {
                     "include": "#variable_access"
@@ -384,7 +388,7 @@
                     "name": "meta.punctuation.parenthesis"
                 }
             },
-            "contentName": "meta.parameters",
+            "contentName": "meta.arguments",
             "patterns": [
                 {
                     "include": "#arguments"
