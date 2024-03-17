@@ -99,7 +99,10 @@
       {
         "language": "tpl",
         "scopeName": "source.tpl",
-        "path": "./src/tpl.tmLanguage.json"
+        "path": "./src/tpl.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.ktx": "kotlin"
+        }
       }
     ],
     "snippets": [

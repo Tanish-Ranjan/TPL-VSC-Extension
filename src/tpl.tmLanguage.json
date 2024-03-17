@@ -1,8 +1,538 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "TPL (The Professional's Language)",
-	"scopeName": "source.tpl",
-	"patterns": [
-        
-	]
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "TPL (The Professional's Language)",
+    "scopeName": "source.tpl",
+    "patterns": [
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#statements"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#expression"
+        }
+    ],
+    "repository": {
+
+        "comments": {
+            "match": "//.*",
+            "name": "comment.line"
+        },
+
+        "statements": {
+            "patterns": [
+                {
+                    "include": "#class_definition"
+                },
+                {
+                    "include": "#function_definition"
+                },
+                {
+                    "include": "#variable_definition"
+                },
+                {
+                    "include": "#if_elif_definition"
+                },
+                {
+                    "include": "#for_definition"
+                },
+                {
+                    "include": "#while_definition"
+                },
+                {
+                    "include": "#code_block"
+                },
+                {
+                    "match": ":",
+                    "name": "meta.punctuation.separator"
+                },
+                {
+                    "include": "#operators"
+                },
+                {
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#expression"
+                }
+            ]
+        },
+
+        "class_definition": {
+            "comment": "For class definitions like: class foo(...)",
+            "begin": "^\\s*(\\bclass\\b)\\s+(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "entity.name.class"
+                },
+                "3": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#parameters"
+                },
+                {
+                    "match": ",",
+                    "name": "meta.punctuation.separator"
+                }
+            ],
+            "contentName": "meta.parameters"
+        },
+
+        "parameters": {
+            "patterns": [
+                {
+                    "include": "#parameter_default"
+                },
+                {
+                    "include": "#parameter"
+                }
+            ]
+        },
+        "parameter": {
+            "match": "(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(:)\\s*(\\b[_[:alpha:]][_[:alnum:]]*\\b)",
+            "captures": {
+                "1": {
+                    "name": "variable.parameter"
+                },
+                "2": {
+                    "name": "keyword.operator"
+                },
+                "3": {
+                    "name": "entity.name.type"
+                }
+            }
+        },
+        "parameter_default": {
+            "begin": "(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(:)\\s*(\\b[_[:alpha:]][_[:alnum:]]**\\b)\\s*(=)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "variable.parameter"
+                },
+                "2": {
+                    "name": "keyword.operator"
+                },
+                "3": {
+                    "name": "entity.name.type"
+                },
+                "4": {
+                    "name": "keyword.operator"
+                }
+            },
+            "end": "(?=[,)])",
+            "patterns": [
+                {
+                    "include": "#expression"
+                }
+            ]
+        },
+
+        "function_definition": {
+            "comment": "For function definitions like: fun foo(...)",
+            "begin": "^\\s*(\\bfun\\b)\\s+(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "entity.name.function"
+                },
+                "3": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#parameters"
+                },
+                {
+                    "match": ",",
+                    "name": "meta.punctuation.separator"
+                }
+            ],
+            "contentName": "meta.parameters"
+        },
+
+        "variable_definition": {
+            "comment": "For variable definitions like: var foo = ...",
+            "match": "^\\s*(\\bvar\\b)\\s+(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(=)",
+            "captures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "entity.name.variable"
+                },
+                "3": {
+                    "name": "keyword.operator"
+                }
+            }
+        },
+
+        "if_elif_definition": {
+            "comment": "For if, elif definitions like: if (...) or elif (...)",
+            "begin": "^\\s*\\b(if|elif)\\b\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#expression"
+                }
+            ],
+            "contentName": "meta.condition.if"
+        },
+
+        "for_definition": {
+            "comment": "For for definition like: for (...)",
+            "begin": "^\\s*\\b(for)\\b\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#expression"
+                }
+            ],
+            "contentName": "meta.condition.for"
+        },
+
+        "while_definition": {
+            "comment": "For while definition like: while (...)",
+            "begin": "^\\s*\\b(while)\\b\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#expression"
+                }
+            ],
+            "contentName": "meta.condition.for"
+        },
+
+        "code_block": {
+            "begin": "\\s*(\\{)\\s*",
+            "end": "(\\})",
+            "beginCaptures": {
+                "1": {
+                    "name": "meta.punctuation.curly"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.curly"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#statements"
+                }
+            ]
+        },
+
+        "expression": {
+            "patterns": [
+                {
+                    "include": "#ktx"
+                },
+                {
+                    "include": "#call_expression"
+                },
+                {
+                    "include": "#value_access_expression"
+                },
+                {
+                    "include": "#variable_access"
+                },
+                {
+                    "include": "#list_init"
+                },
+                {
+                    "include": "#constants"
+                }
+            ]
+        },
+
+        "ktx": {
+            "patterns": [
+                {
+                    "include": "#ktx_start"
+                },
+                {
+                    "include": "#ktx_block"
+                }
+            ]
+        },
+        "ktx_start": {
+            "begin": "\\s*(\\bktx\\b)\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "keyword.control"
+                },
+                "2": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#variable_access"
+                },
+                {
+                    "match": ",",
+                    "name": "meta.punctuation.separator"
+                }
+            ]
+        },
+        "ktx_block": {
+            "begin": "(```)",
+            "end": "(```)",
+            "beginCaptures": {
+                "1": {
+                    "name": "meta.punctuation.ktx"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.ktx"
+                }
+            },
+            "contentName": "meta.embedded.ktx",
+            "patterns": [
+                {
+                    "include": "source.kotlin"
+                }
+            ]
+        },
+
+        "call_expression": {
+            "begin": "(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(\\()",
+            "end": "(\\))",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.name.function"
+                },
+                "2": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.parenthesis"
+                }
+            },
+            "contentName": "meta.parameters",
+            "patterns": [
+                {
+                    "include": "#arguments"
+                },
+                {
+                    "match": ",",
+                    "name": "meta.punctuation.separator"
+                }
+            ]
+        },
+
+        "arguments": {
+            "patterns": [
+                {
+                    "include": "#argument_named"
+                },
+                {
+                    "include": "#expression"
+                }
+            ]
+        },
+        "argument_named": {
+            "begin": "(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(=)\\s*",
+            "beginCaptures": {
+                "1": {
+                    "name": "variable.parameter"
+                },
+                "2": {
+                    "name": "keyword.operator"
+                }
+            },
+            "end": "(?=[,)])",
+            "patterns": [
+                {
+                    "include": "#expression"
+                }
+            ]
+        },
+
+        "value_access_expression": {
+            "begin": "(\\b[_[:alpha:]][_[:alnum:]]*\\b)\\s*(\\[)",
+            "end": "]",
+            "beginCaptures": {
+                "1": {
+                    "name": "entity.name.variable"
+                },
+                "2": {
+                    "name": "meta.punctuation.square"
+                }
+            },
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.square"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#expression"
+                }
+            ],
+            "contentName": "meta.access"
+        },
+
+        "variable_access": {
+            "match": "\\b[_[:alpha:]][_[:alnum:]]*\\b",
+            "name": "entity.name.variable"
+        },
+
+        "list_init": {
+            "begin": "(\\[)",
+            "beginCaptures": {
+                "1": {
+                    "name": "meta.punctuation.square"
+                }
+            },
+            "end": "(\\])",
+            "endCaptures": {
+                "1": {
+                    "name": "meta.punctuation.square"
+                }
+            },
+            "contentName": "meta.list.init",
+            "patterns": [
+                {
+                    "include": "#expression"
+                },
+                {
+                    "match": ",",
+                    "name": "meta.punctuation.separator"
+                }
+            ]
+        },
+
+        "constants": {
+            "patterns": [
+                {
+                    "include": "#numbers"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#boolean"
+                },
+                {
+                    "include": "#null"
+                }
+            ]
+        },
+        "numbers": {
+            "name": "constant.numeric",
+            "match": "(\\d+|\\d*\\.\\d+)"
+        },
+        "strings": {
+            "name": "string.quoted.double",
+            "match": "\"(\\\\.|[^\"])*\"",
+            "captures": {
+                "0": {
+                    "patterns": [
+                        {
+                            "include": "#string_escape"
+                        }
+                    ]
+                }
+            }
+        },
+        "boolean": {
+            "name": "constant.language",
+            "match": "\\b(true|false)\\b"
+        },
+        "null": {
+            "name": "constant.language",
+            "match": "\\b(null)\\b"
+        },
+        "string_escape": {
+            "name": "constant.character.escape",
+            "match": "\\\\(.)"
+        },
+
+        "keywords": {
+            "name": "keyword.control",
+            "match": "\\b(var|if|elif|else|for|while|fun|return|class|ktx|break|continue|import|try|catch)\\b"
+        },
+
+        "operators": {
+            "name": "keyword.operator",
+            "match": "(=|\\+=|-=|\\*=|/=|%=|\\^=|\\+\\+|--|\\+|-|\\*|/|%|\\^|\\bis\\b|\\bin\\b|==|!=|<=|>=|<|>|!|\\band\\b|\\bor\\b)"
+        }
+
+    }
 }
