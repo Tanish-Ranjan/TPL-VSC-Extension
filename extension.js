@@ -1,9 +1,12 @@
 const vscode = require('vscode');
 const { selectInterpreter } = require("./src/selectInterpreter")
+const { addFileAssociation, removeFileAssociation } = require("./src/pluginFileAssociation");
 
 let activeTPLTerminal = null;
 
 function activate(context) {
+
+	addFileAssociation();
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('tpl.runEditorContents', async (resource) => {
@@ -14,7 +17,7 @@ function activate(context) {
 			}
 
 			if (targetResource) {
-				
+
 				const scriptPath = targetResource.fsPath;
 				const interpreterPath = vscode.workspace.getConfiguration().get('tpl.interpreterPath');
 
@@ -24,11 +27,11 @@ function activate(context) {
 				}
 
 				const command = 'java -jar ' + interpreterPath + ' ' + scriptPath;
-	
+
 				if (activeTPLTerminal) {
-	
+
 					if (!activeTPLTerminal.exitStatus) {
-	
+
 						try {
 							await activeTPLTerminal.show();
 							activeTPLTerminal.sendText(command);
@@ -36,11 +39,11 @@ function activate(context) {
 						} catch (e) {
 							console.error("Error focusing or sending command to existing TPL terminal: " + e);
 						}
-	
+
 					}
-	
+
 				}
-	
+
 				activeTPLTerminal = createAndShowTPLTerminal(command);
 
 			}
@@ -65,7 +68,9 @@ function createAndShowTPLTerminal(command) {
 	return terminal;
 }
 
-function deactivate() { }
+function deactivate() {
+	removeFileAssociation();
+}
 
 module.exports = {
 	activate,

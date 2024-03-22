@@ -112,7 +112,7 @@
     "Catch": {
         "prefix": "catch",
         "body": [
-            "catch {",
+            "catch (${1:name}) {",
             "\t$0",
             "}"
         ],
@@ -122,8 +122,8 @@
         "prefix": "trycatch",
         "body": [
             "try {",
-            "\t$0",
-            "} catch {",
+            "\t$1",
+            "} catch (${2:name}) {",
             "\t$0",
             "}"
         ],

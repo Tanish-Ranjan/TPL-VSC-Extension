@@ -9,7 +9,7 @@
     "url": "https://tanishranjan-portfolio.web.app/"
   },
   "publisher": "TanishRanjan",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "GPL-3.0-only",
   "repository": {
     "url": "https://github.com/Tanish-Ranjan/TPL-VSC-Extension"
@@ -25,7 +25,8 @@
   ],
   "activationEvents": [
     "onLanguage:tpl",
-    "onCommand:tpl.selectInterpreter"
+    "onCommand:tpl.selectInterpreter",
+    "onStartupFinished"
   ],
   "main": "./extension.js",
   "contributes": {
