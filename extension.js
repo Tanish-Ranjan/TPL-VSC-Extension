@@ -26,7 +26,7 @@ function activate(context) {
 					return
 				}
 
-				const command = 'java -jar ' + interpreterPath + ' ' + scriptPath;
+				const command = 'java -jar "' + interpreterPath + '" "' + scriptPath + '"';
 
 				if (activeTPLTerminal) {
 
@@ -62,7 +62,7 @@ function activate(context) {
 }
 
 function createAndShowTPLTerminal(command) {
-	const terminal = vscode.window.createTerminal('The Professional\'s Language (TPL)');
+	const terminal = vscode.window.createTerminal('(TPL) The Professional\'s Language');
 	terminal.sendText(command);
 	terminal.show();
 	return terminal;

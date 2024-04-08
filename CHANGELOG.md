@@ -9,3 +9,7 @@
 # v0.0.3 (2024-03-22)
 
 * This release of TPL extension, allows `tpl.plugins` file to be `JSON` formatted and updated snippets to keep up with `v0.1.0-beta05` of TPL.
+
+# v0.0.4
+
+* This release of TPL extension, prevents error when TPL script or interpreter path containes space(s). Updated snippets to keep up with `v0.1.0-beta06` of TPL.
